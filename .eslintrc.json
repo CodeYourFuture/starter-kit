@@ -6,29 +6,5 @@
   "extends": [
     "@codeyourfuture/standard"
   ],
-  "overrides": [
-    {
-      "files": [
-        "setupTests.js",
-        "**/*.test.js"
-      ],
-      "extends": [
-        "plugin:jest/recommended"
-      ],
-      "rules": {
-        "jest/expect-expect": [
-          "error",
-          {
-            "assertFunctionNames": [
-              "cy.**.should",
-              "cy.checkA11y",
-              "expect",
-              "request.**.expect"
-            ]
-          }
-        ]
-      }
-    }
-  ],
   "parser": "babel-eslint"
 }
