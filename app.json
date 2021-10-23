@@ -1,5 +1,10 @@
 {
-  "name": "Starter Kit",
-  "description": "Starter kit for full-stack JavaScript projects",
-  "stack": "heroku-20"
+	"name": "Starter Kit",
+	"description": "Starter kit for full-stack JavaScript projects",
+	"stack": "heroku-20",
+	"addons": [
+		{
+			"plan": "heroku-postgresql:hobby-dev"
+		}
+	]
 }
