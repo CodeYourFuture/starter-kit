@@ -3,7 +3,12 @@ import { Pool } from "pg";
 const dbUrl = process.env.DATABASE_URL || "postgres://localhost:5432/cyf";
 
 const pool = new Pool({
-	connectionString: dbUrl,
+	// connectionString: dbUrl,
+	host: "localhost",
+	port: 5432,
+	database: "asd",
+	user: "postgres",
+	password: "postgres",
 	connectionTimeoutMillis: 5000,
 	ssl: dbUrl.includes("localhost") ? false : { rejectUnauthorized: false },
 });

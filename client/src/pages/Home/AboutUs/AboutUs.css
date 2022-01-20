@@ -1,0 +1,50 @@
+.Aboutus_main_container {
+	background-color: var(main-bg-color);
+	height: 800px;
+}
+.Aboutus_container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+	padding-top: 8%;
+}
+.Aboutus_text_container {
+	padding-top: 9%;
+}
+.Aboutus_header {
+	font-size: 48px;
+	margin-bottom: 30px;
+}
+.Aboutus_text {
+	font-size: 20px;
+	line-height: 2rem;
+	margin-bottom: 40px;
+}
+.Aboutus_button {
+	width: 190px;
+	background-color: var(--darkgreen-color);
+	border: none;
+	height: 70px;
+	color: var(--white-color);
+	font-size: 20px;
+}
+.Aboutus_img_container {
+	/* margin-left: -580px; */
+}
+.Aboutus_img_color {
+	background-color: var(--green-bg-color);
+	height: 540px;
+	width: 556px;
+	border-radius: 5%;
+	position: relative;
+}
+.Aboutus_img_container img {
+	width: 624px;
+	height: 430px;
+	border-radius: 5%;
+	position: absolute;
+	right: -150px;
+	top: 55px;
+}

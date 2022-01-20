@@ -1,0 +1,11 @@
+:root {
+    --main-bg-color:#FFF8F3;
+    --green-bg-color:#A4E4DB;
+    --blue-color:#1E6DD0;
+    --white-color:#FFF;
+    --darkgreen-color:#0A2229;
+    --lightorange:#F4DFD0;
+}
+img{
+    width: 100px;
+}
