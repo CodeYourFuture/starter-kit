@@ -1,17 +1,20 @@
-Thank you for contributing! To help the review process, please provide the following:
+## Naming Rules
 
-### Proposal
-Provide a short description of the change you are proposing and the reasons for it.
+Name your PR like this: ISSUENUMBER-TITLE-YOURNAME
 
-### Related
-Provide links to any associated pull requests or issues. You can use `#123` to link to a PR or issue in this repository, or `user/repo#123` to link to other repositories.
+## Description
 
-### Checklist
+Write a summary of your change. Explain why you have made it.
 
-- [ ] I have read the [code of conduct] and [contributing guide]
-- [ ] I have made this pull request to the `main` branch
-- [ ] I have run all of the automated validation using `npm run ship`
-- [ ] I have added myself to the `"contributors"` list in the `package.json` (or do not want to)
+## Related to
 
-[code of conduct]: https://github.com/textbook/starter-kit/blob/main/.github/CODE_OF_CONDUCT.md
-[contributing guide]: https://github.com/textbook/starter-kit/blob/main/.github/CONTRIBUTING.md
+Make sure you include the issue number with a hash sign # so Github can link this PR to the right issue, like this:
+
+Fixes #1
+
+## Checklist:
+
+- [ ] My code follows the style guidelines of this project
+- [ ] I have carefully reviewed my own code
+- [ ] I have commented my code
+- [ ] I have updated any documentation
