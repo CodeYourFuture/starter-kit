@@ -3,7 +3,6 @@ ARG ALPINE_RELEASE=3.16
 
 FROM node:${NODE_RELEASE}-alpine${ALPINE_RELEASE} AS build
 
-ENV CYPRESS_INSTALL_BINARY=0
 
 RUN echo "Node $(node -v) / NPM v$(npm -v)"
 

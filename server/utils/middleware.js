@@ -18,19 +18,12 @@ export const clientRouter = (apiRoot) => {
 	return router;
 };
 
-export const configuredHelmet = () => helmet({
-	contentSecurityPolicy: {
-		directives: {
-			defaultSrc: ["'self'"],
-			objectSrc: ["'none'"],
-			scriptSrc: ["'self'", "unpkg.com", "polyfill.io"],
-			styleSrc: ["'self'", "https: 'unsafe-inline'"],
-			upgradeInsecureRequests: [],
-		},
-	},
-});
+export const configuredHelmet = () => helmet({ contentSecurityPolicy: false });
 
-export const configuredMorgan = () => morgan("dev", { stream: { write: (message) => logger.info(message.trim()) } });
+export const configuredMorgan = () =>
+	morgan("dev", {
+		stream: { write: (message) => logger.info(message.trim()) },
+	});
 
 export const httpsOnly = () => (req, res, next) => {
 	if (!req.secure) {

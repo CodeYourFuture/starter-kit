@@ -9,4 +9,4 @@ This starter kit uses [Webpack] to create the React client app.
 - `prod.config.js`: creates the actual build output for production mode (`npm run build`)
   - Externalises React/-DOM to a CDN to reduce vendor bundle size
 
-[Webpack]: https://webpack.js.org/
+[webpack]: https://webpack.js.org/

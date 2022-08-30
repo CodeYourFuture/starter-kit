@@ -8,12 +8,10 @@ const logger = createLogger({
 		format.colorize(),
 		format.errors({ stack: true }),
 		format.splat(),
-		format.simple(),
+		format.simple()
 	),
 	level: config.logLevel,
-	transports: [
-		new transports.Console(),
-	],
+	transports: [new transports.Console()],
 });
 
 if (!config.production) {

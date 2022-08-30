@@ -1,6 +1,4 @@
 {
-  "extends": "../.babelrc",
-  "presets": [
-    ["@babel/preset-env", { "targets": { "node": 14 } }]
-  ]
+	"extends": "../.babelrc",
+	"presets": [["@babel/preset-env", { "targets": { "node": 14 } }]]
 }
