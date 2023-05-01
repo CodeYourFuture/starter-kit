@@ -8,7 +8,7 @@ export function Home() {
 	const [message, setMessage] = useState("Loading...");
 
 	useEffect(() => {
-		fetch("/api")
+		fetch("/forgot_password")
 			.then((res) => {
 				if (!res.ok) {
 					throw new Error(res.statusText);
@@ -36,8 +36,6 @@ export function Home() {
 					{message}
 				</h1>
 				<Link to="/about/this/site">About</Link>
-				<h1></h1>
-				<Link to="/forgot-password">Forgot Password (Demo)</Link> 
 			</div>
 		</main>
 	);

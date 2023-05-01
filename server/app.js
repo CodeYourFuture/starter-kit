@@ -18,6 +18,10 @@ app.use(express.json());
 app.use(configuredHelmet());
 app.use(configuredMorgan());
 
+// Forget password Dependencies
+app.use(express.urlencoded({extended: false}))
+app.set('view engine', 'enjs')
+
 if (config.production) {
 	app.enable("trust proxy");
 	app.use(httpsOnly());
