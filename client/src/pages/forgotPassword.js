@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-
-const forgotPassword = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
 
   const handleEmailChange = (e) => {
@@ -12,19 +11,24 @@ const forgotPassword = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch(`http://localhost:3000/forgot_password?email=${email}`)
-      .then((response) => response.text())
+    fetch("http://localhost:3000/forgot_password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
-        toast.success(`Email send to ...${email}`)
+        toast.success(`Email sent to ${email}`);
       })
       .catch((error) => {
-        toast.error('error');
+        toast.error("Failed to send email. Please try again.");
       });
   };
 
   return (
-   <div>
+    <div>
       <form onSubmit={handleSubmit}>
         <label>
           Email:
@@ -32,8 +36,8 @@ const forgotPassword = () => {
         </label>
         <button type="submit">Submit</button>
       </form>
-   </div>
+    </div>
   );
-}
+};
 
-export default forgotPassword
+export default ForgotPassword;
