@@ -1,6 +1,5 @@
 import { Router } from "express";
 import logger from "./utils/logger";
-import User from "./models/User";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 
@@ -15,18 +14,18 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
-const users = [
+const Users = [
 	{
 		id: 1,
 		name: 'Advocate Maroga',
 		email: 'tboymaroga7@gmail.com',
-		password: '$2b$10$3nt4E4GFXvcyMwGrztOpbOqAlp0McdoWcZmB9P2BGTQ0LnE.uN/2W' // Encrypted password: 'password'
+		password: 'Zxcvbnm2023'
 	},
 	{
 		id: 2,
-		name: 'Jane Smith',
-		email: 'jane@example.com',
-		password: '$2b$10$q01aX9.nDnImeqSG1HxJdOyA1fnVLGczlJd3fIKrDBrZ/Yn9TVejG' // Encrypted password: 'password'
+		name: 'John Due',
+		email: 'johndue@gmail.com',
+		password: 'Qwerty2023'
 	}
 ];
 
@@ -38,9 +37,10 @@ router.get("/", (_, res) => {
 
 router.post("/forgot_password", async (req, res) => {
 	const email = req.body.email;
+	const transporter = req.transporter; // access transporter object
 
 	try {
-		const user = await User.findOne({ email });
+		const user = Users.find((u) => u.email === email);
 		if (!user) {
 			return res.status(400).json({ error: "User not found" });
 		}
@@ -48,7 +48,6 @@ router.post("/forgot_password", async (req, res) => {
 		const payload = { email: user.email, id: user.id };
 		const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "10m" });
 
-	
 		const mailOptions = {
 			from: "mrtamaroga@gmail.com",
 			to: email,
@@ -59,10 +58,13 @@ router.post("/forgot_password", async (req, res) => {
         <a href="http://localhost:3000/reset_password/${user.id}/${token}">Reset password</a>
       `,
 		};
+
 		transporter.sendMail(mailOptions, (error, info) => {
 			if (error) {
 				console.error(error);
-				return res.status(500).json({ error: `Failed to send email ${email}` });
+				return res
+					.status(500)
+					.json({ error: `Failed to send email ${email}` });
 			}
 			console.log("Email sent: " + info.response);
 			res.json({ message: "Password reset link sent to your email" });
@@ -73,23 +75,22 @@ router.post("/forgot_password", async (req, res) => {
 	}
 });
 
-router.post("/reset_password", async (req, res) => {
-	const { id, token, password } = req.body;
+router.post("/reset_password/:id/:token", async (req, res) => {
+	const { id, token } = req.params;
+	const { password } = req.body;
 
 	try {
-		// Verify token
 		const payload = jwt.verify(token, JWT_SECRET);
-		if (payload.id !== id) {
+		if (payload.id !== parseInt(id)) {
 			return res.status(400).json({ error: "Invalid token" });
 		}
 
-		// Update user password
-		const user = await User.findById(id);
+		const user = Users.find((user) => user.id === parseInt(id));
 		if (!user) {
 			return res.status(400).json({ error: "User not found" });
 		}
 		user.password = password;
-		await user.save();
+		// await user.save();
 
 		res.json({ message: "Password reset successful" });
 	} catch (error) {
@@ -101,18 +102,16 @@ router.post("/reset_password", async (req, res) => {
 
 
 // Login API
-router.post('/login', async (req, res) => {
+router.post('/login', (req, res) => {
 	const { email, password } = req.body;
 
-	const user = users.find(user => user.email === email);
+	const user = Users.find(user => user.email === email);
 
 	if (!user) {
 		return res.status(400).json({ error: 'Invalid credentials' });
 	}
 
-	const isMatch = await bcrypt.compare(password, user.password);
-
-	if (!isMatch) {
+	if (user.password !== password) {
 		return res.status(400).json({ error: 'Invalid credentials' });
 	}
 
@@ -120,6 +119,7 @@ router.post('/login', async (req, res) => {
 	const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '30m' });
 	res.json({ token });
 });
+
 
 
 export default router;

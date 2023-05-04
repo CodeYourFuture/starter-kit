@@ -11,10 +11,11 @@ const ForgotPassword = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:3000/forgot_password", {
+    fetch("api/forgot_password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+
       },
       body: JSON.stringify({ email }),
     })
