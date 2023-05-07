@@ -2,6 +2,8 @@ import { Router } from "express";
 import logger from "./utils/logger";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
+const express = require("express");
+const axios = require("axios");
 
 const router = Router();
 
@@ -99,8 +101,6 @@ router.post("/reset_password/:id/:token", async (req, res) => {
 	}
 });
 
-
-
 // Login API
 router.post('/login', (req, res) => {
 	const { email, password } = req.body;
@@ -118,6 +118,80 @@ router.post('/login', (req, res) => {
 	const payload = { id: user.id };
 	const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '30m' });
 	res.json({ token });
+});
+
+//Tutor-Profile API Section
+
+// Get tutor profile by ID
+router.get("/:tutorId", async (req, res) => {
+	const { tutorId } = req.params;
+
+	try {
+		const response = await axios.get(`/api/tutors/${tutorId}`
+		);
+		const tutor = response.data;
+		res.json(tutor);
+	} catch (error) {
+		if (error.response && error.response.status === 404) {
+			return res.status(404).json({ message: "Tutor not found" });
+		}
+		res.status(500).json({ message: "Internal server error" });
+	}
+});
+
+// Update tutor profile
+router.put("/:tutorId", async (req, res) => {
+	const { tutorId } = req.params;
+
+	try {
+		const response = await axios.put(`/api/tutors/${tutorId}`,
+			req.body
+		);
+		const updatedTutor = response.data;
+		res.json(updatedTutor);
+	} catch (error) {
+		if (error.response && error.response.status === 404) {
+			return res.status(404).json({ message: "Tutor not found" });
+		}
+		res.status(500).json({ message: "Internal server error" });
+	}
+});
+
+
+// Learner Profile API Section
+
+router.get("/:learnerId", async (req, res) => {
+	const { learnerId } = req.params;
+	try {
+		const response = await axios.get(
+			`https://api.example.com/learners/${learnerId}`
+		);
+		const learner = response.data;
+		res.json(learner);
+	} catch (error) {
+		if (error.response && error.response.status === 404) {
+			return res.status(404).json({ message: "Learner is not There" });
+		}
+		res.status(500).json({ message: "It's Server error" });
+	}
+});
+
+// Update learner profile
+router.put("/:learnerId", async (req, res) => {
+	const { tutorId } = req.params;
+
+	try {
+		const response = await axios.put(`/api/learners/${learnerId}`,
+			req.body
+		);
+		const updatedTutor = response.data;
+		res.json(updatedLearner);
+	} catch (error) {
+		if (error.response && error.response.status === 404) {
+			return res.status(404).json({ message: "Learner is not There" });
+		}
+		res.status(500).json({ message: "It's Server error" });
+	}
 });
 
 
