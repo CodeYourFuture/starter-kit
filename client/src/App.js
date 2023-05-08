@@ -5,11 +5,13 @@ import Home from "./pages/Home";
 import ForgotPassword from "./Auth/forgotPassword";
 import Login from "./Auth/Login";
 import ResetPassword from "./Auth/ResetPassword";
+import TutorProfile from "./Profiles/TutorProfile";
+import LearnerProfile from "./Profiles/LearnerProfile";
 
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
- 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const App = () => (
 	<div>
 		<Routes>
@@ -20,11 +22,13 @@ const App = () => (
 			<Route path="/forgot-password" element={<ForgotPassword />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/reset_password/:id/:token" element={<ResetPassword />} />
-
+			<Route path="/TutorProfile" element={<TutorProfile />} />
+			<Route path="/LearnerProfile" element={<LearnerProfile />} />
+			
 		</Routes>
-		<ToastContainer />	
+		<ToastContainer />
 	</div>
-	
+
 );
 
 export default App;

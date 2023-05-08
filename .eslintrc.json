@@ -6,8 +6,9 @@
 	"extends": ["@codeyourfuture/standard"],
 	"parser": "@babel/eslint-parser",
 	"root": true,
-	"rules": {
-		"indent": "off",
-		"operator-linebreak": "off"
-	}
+	// "rules": {
+	// 	"indent": "off",
+	// 	"operator-linebreak": "off"
+	// }
+	"linebreak-style": ["error","windows"]
 }
