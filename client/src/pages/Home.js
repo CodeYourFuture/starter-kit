@@ -37,7 +37,7 @@ export function Home() {
 				</h1>
 				<Link to="/about/this/site">About</Link>
 				<h1></h1>
-				<Link to="/forgot-password">Forgot Password (Demo)</Link> 
+				<Link to="/forgot-password">Forgot Password (Demo)</Link>
 			</div>
 		</main>
 	);
