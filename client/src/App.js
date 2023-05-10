@@ -41,6 +41,7 @@ import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
 
 import Home from "./pages/Home";
 import Login from "./Auth/Combined";
+import ForgotPassword from "./Auth/forgotPassword";
 
 // import About from "./Components/About";
 // import Contact from "./Components/Contact"
@@ -67,6 +68,7 @@ function App() {
       <Routes>
 	  <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
           {/* <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
