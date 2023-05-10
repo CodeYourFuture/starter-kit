@@ -11,9 +11,12 @@ import LearnerProfile from "./Profiles/LearnerProfile";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Nav from "./Components/Nav";
+import Security from "./Auth/Security";
 
 const App = () => (
 	<div>
+		<Nav />
 		<Routes>
 			<Route path="/" element={<Home />} />
 			<Route path="/about/this/site" element={<About />} />
@@ -24,6 +27,7 @@ const App = () => (
 			<Route path="/reset_password/:id/:token" element={<ResetPassword />} />
 			<Route path="/TutorProfile" element={<TutorProfile />} />
 			<Route path="/LearnerProfile" element={<LearnerProfile />} />
+			<Route path="/*" element={<Security />} />
 			
 		</Routes>
 		<ToastContainer />
