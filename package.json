@@ -15,8 +15,10 @@
 		"dev:client": "webpack serve --config client/webpack/dev.config.js",
 		"dev:server": "cross-env LOG_LEVEL=debug PORT=3100 nodemon --inspect server/server.js",
 		"lint": "npm run lint:eslint && npm run lint:prettier -- --check",
+		"migration": "node-pg-migrate",
 		"preserve": "npm run build",
 		"serve": "npm start",
+		"prestart": "npm run migration -- up",
 		"start": "node dist/server.js",
 		"lint:eslint": "eslint .",
 		"lint:fix": "npm run lint:eslint -- --fix && npm run lint:prettier -- --write",
@@ -77,6 +79,7 @@
 		"express": "^4.18.2",
 		"helmet": "^7.0.0",
 		"morgan": "^1.10.0",
+		"node-pg-migrate": "^6.2.2",
 		"pg": "^8.11.0",
 		"winston": "^3.9.0"
 	},
