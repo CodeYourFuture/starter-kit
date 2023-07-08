@@ -1,10 +1,11 @@
+import { formatRelative } from "date-fns";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
 import logo from "./logo.svg";
 
-export function Home() {
+export function Home({ visit }) {
 	const [message, setMessage] = useState("Loading...");
 
 	useEffect(() => {
@@ -37,6 +38,7 @@ export function Home() {
 				</h1>
 				<Link to="/about/this/site">About</Link>
 			</div>
+			{visit && <p>Visit started: {formatRelative(visit, new Date())}.</p>}
 		</main>
 	);
 }
