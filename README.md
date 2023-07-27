@@ -89,3 +89,12 @@ See the guidance in the [wiki].
 [Webpack]: https://webpack.js.org/
 [wiki]: https://github.com/textbook/starter-kit/wiki
 [Winston]: https://github.com/winstonjs/winston
+
+### Database Table
+- I have created a table in the database called modules
+- The table has:
+    ID (unique id)
+    module_name (string)
+    start date (date)
+    end date (date)
+- This is how you run the table: select * from modules;
