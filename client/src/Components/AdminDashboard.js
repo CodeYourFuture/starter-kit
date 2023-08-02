@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
-function TraineeDashboard() {
+function AdminDashboard() {
   const [selectedValue, setSelectedValue] = useState("Open this select menu");
 
   const handleChange = (event) => {
@@ -23,4 +23,4 @@ function TraineeDashboard() {
   );
 }
 
-export default TraineeDashboard;
+export default AdminDashboard;

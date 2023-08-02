@@ -22,6 +22,7 @@ import Home from "./Components/Home Page/Home";
 import TraineeLogin from "./Components/Login/TraineeLogin";
 import AdminLogin from "./Components/Login/AdminLogin";
 import TraineeDashboard from "./Components/TraineeDashboard";
+import AdminDashboard from "./Components/AdminDashboard";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/trainee-login" element={<TraineeLogin />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/trainee-dashboard" element={<TraineeDashboard />} />
+         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         </Routes>
       </div>
   );
