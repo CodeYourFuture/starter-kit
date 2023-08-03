@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 
-
-
 function TraineeDashboard() {
   const [selectedValue, setSelectedValue] = useState("Open this select menu");
 
