@@ -1,0 +1,54 @@
+/* SigninForm.css */
+
+.signin-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 60px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: bold;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .signin-button {
+    background-color:  #d33a3a;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+
+  }
+
+  .signin-button:hover {
+    background-color: #464647;
+  }
+
+  .signin-button:active {
+    background-color: #003366;
+  }
